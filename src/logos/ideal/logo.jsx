@@ -22,7 +22,7 @@ const LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const svgGetter = ({ primary, secondary }) => {
+const getSVG = ({ primary, secondary }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -75,24 +75,29 @@ const svgGetter = ({ primary, secondary }) => {
 };
 
 export const getIdealSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.IDEAL, svgGetter, LOGO_COLORS);
+  getSVGs(LOGO.IDEAL, getSVG, LOGO_COLORS);
 
 export function IdealLogo({
   logoColor = LOGO_COLOR.BLACK,
+  logoCDNExperimentIsEnabled,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
+  logoCDNExperimentIsEnabled?: boolean,
 }): ComponentNode<SVGLogoProps> {
-  const CDN_URL =
-    "https://www.paypalobjects.com/images/checkout/latinum/Altpay_logo_iDEAL.svg";
-
   const svg = getIdealSVGs()[logoColor];
+
+  let cdnUrl;
+  if (logoCDNExperimentIsEnabled) {
+    cdnUrl =
+      "https://www.paypalobjects.com/images/checkout/latinum/Altpay_logo_iDEAL.svg";
+  }
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.IDEAL}
-      cdnUrl={CDN_URL}
+      cdnUrl={cdnUrl}
       render={() => {
         return svg;
       }}
