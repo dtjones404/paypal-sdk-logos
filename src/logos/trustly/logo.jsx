@@ -89,14 +89,16 @@ export function TrustlyLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary } = getLogoColors(LOGO.TRUSTLY, LOGO_COLORS, logoColor);
+  const svg = getTrustlySVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.TRUSTLY, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.TRUSTLY}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

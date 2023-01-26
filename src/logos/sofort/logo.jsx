@@ -69,19 +69,17 @@ export function SofortLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary } = getLogoColors(
-    LOGO.SOFORT,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getSofortSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.SOFORT, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.SOFORT}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

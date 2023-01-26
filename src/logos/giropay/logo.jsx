@@ -117,19 +117,17 @@ export function GiropayLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary, tertiary, quaternary, quinary } = getLogoColors(
-    LOGO.GIROPAY,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getGiropaySVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.GIROPAY, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.GIROPAY}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

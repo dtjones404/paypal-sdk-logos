@@ -122,15 +122,17 @@ export function SepaLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { main, card } = getLogoColors(LOGO.SEPA, LOGO_COLORS, logoColor);
+  const svg = getSepaSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.SEPA, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.SEPA}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

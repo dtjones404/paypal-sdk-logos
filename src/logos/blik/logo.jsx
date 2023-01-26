@@ -114,18 +114,16 @@ export function BlikLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary, tertiary, quaternary, senary } = getLogoColors(
-    LOGO.BLIK,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getBlikSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.BLIK, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.BLIK}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

@@ -158,15 +158,17 @@ export function ItauLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary } = getLogoColors(LOGO.SOFORT, LOGO_COLORS, logoColor);
+  const svg = getItauSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.ITAU, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.ITAU}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

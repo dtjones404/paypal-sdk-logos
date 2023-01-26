@@ -51,15 +51,17 @@ export function ZimplerLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary } = getLogoColors(LOGO.ZIMPLER, LOGO_COLORS, logoColor);
+  const svg = getZimplerSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.ZIMPLER, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.ZIMPLER}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

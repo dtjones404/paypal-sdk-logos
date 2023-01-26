@@ -152,19 +152,17 @@ export function MercadoPagoLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary, tertiary, quaternary } = getLogoColors(
-    LOGO.MERCADOPAGO,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getMercadoPagoSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.MERCADOPAGO, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.MERCADOPAGO}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

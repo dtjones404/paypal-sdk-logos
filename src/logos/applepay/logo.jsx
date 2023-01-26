@@ -47,7 +47,8 @@ export function ApplePayLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary } = getLogoColors(LOGO.APPLEPAY, LOGO_COLORS, logoColor);
+  const svg = getApplepaySVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.APPLEPAY, logoColor);
 
   return (
     <SVGLogo
@@ -56,8 +57,9 @@ export function ApplePayLogo({
       logoColor={logoColor}
       alt="Apple Pay"
       aria-label="Apple Pay"
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

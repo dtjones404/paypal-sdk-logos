@@ -95,19 +95,17 @@ export function MybankLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary } = getLogoColors(
-    LOGO.MYBANK,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getMybankSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.MYBANK, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.MYBANK}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

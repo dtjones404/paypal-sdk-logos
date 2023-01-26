@@ -338,16 +338,17 @@ export function VerkkopankkiLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary, tertiary, quaternary, quinary, senary } =
-    getLogoColors(LOGO.VERKKOPANKKI, LOGO_COLORS, logoColor);
+  const svg = getVerkkopankkiSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.VERKKOPANKKI, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.VERKKOPANKKI}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

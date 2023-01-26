@@ -52,15 +52,17 @@ export function PayuLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary } = getLogoColors(LOGO.PAYU, LOGO_COLORS, logoColor);
+  const svg = getPayuSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.PAYU, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.PAYU}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

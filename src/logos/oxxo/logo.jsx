@@ -74,19 +74,17 @@ export function OxxoLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary } = getLogoColors(
-    LOGO.OXXO,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getOxxoSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.OXXO, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.OXXO}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

@@ -128,19 +128,17 @@ export function MultibancoLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary } = getLogoColors(
-    LOGO.MULTIBANCO,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getMultibancoSVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.MULTIBANCO, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.MULTIBANCO}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

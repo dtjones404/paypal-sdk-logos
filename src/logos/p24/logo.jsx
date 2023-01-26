@@ -134,19 +134,17 @@ export function P24Logo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary } = getLogoColors(
-    LOGO.P24,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getP24SVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.P24, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.P24}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

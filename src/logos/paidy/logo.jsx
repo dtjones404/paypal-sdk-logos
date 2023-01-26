@@ -118,19 +118,17 @@ export function PaidyLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary, tertiary } = getLogoColors(
-    LOGO.PAIDY,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getPaidySVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.PAIDY, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.PAIDY}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );

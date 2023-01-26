@@ -104,19 +104,17 @@ export function WechatpayLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const { primary, secondary } = getLogoColors(
-    LOGO.WECHATPAY,
-    LOGO_COLORS,
-    logoColor
-  );
+  const svg = getWechatpaySVGs()[logoColor];
+  const cdnUrl = getLogoCDNUrl(LOGO.WECHATPAY, logoColor);
 
   return (
     <SVGLogo
       {...props}
       name={LOGO.WECHATPAY}
       logoColor={logoColor}
+      cdnUrl={cdnUrl}
       render={() => {
-        return;
+        return svg;
       }}
     />
   );
