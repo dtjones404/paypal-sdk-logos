@@ -5,9 +5,12 @@ import { $ } from "zx";
 import { html } from "@krakenjs/jsx-pragmatic";
 
 // eslint-disable-next-line import/no-namespace
-import * as logos from "../src/logos";
+import { getSVGFilename } from "../src/lib";
+import { getIdealSVGs } from "../src/logos";
 
-import { getPackage, getSVGFilename } from "./utils";
+import { getPackage } from "./utils";
+
+const LOGO_GETTERS = { ideal: getIdealSVGs };
 
 async function buildLogos() {
   const version = getPackage().version;
@@ -22,15 +25,11 @@ async function buildLogos() {
 
   const logoPromises = [];
 
-  for (const [name, value] of Object.entries(logos)) {
-    if (!name.includes("SVGs")) {
-      continue;
-    }
-
+  for (const [logoName, logoGetter] of Object.entries(LOGO_GETTERS)) {
     // $FlowFixMe
-    for (const [logoColor, svg] of Object.entries(value())) {
+    for (const [logoColor, svg] of Object.entries(logoGetter())) {
       // $FlowFixMe
-      const filename = getSVGFilename(name, logoColor);
+      const filename = getSVGFilename(logoName, logoColor);
       const filepath = `${outdir}/${filename}`;
 
       // $FlowFixMe

@@ -1,6 +1,6 @@
 /* @flow */
 
-import { LOGO, LOGO_COLOR } from "../constants";
+import { CDN_BASE_URL, LOGO, LOGO_COLOR } from "../constants";
 import type {
   LogoColorMap,
   LogoColors,
@@ -46,4 +46,20 @@ export function getSVGs(
   }
 
   return svgs;
+}
+
+export function getSVGFilename(
+  logoName: $Values<typeof LOGO>,
+  logoColor: $Values<typeof LOGO_COLOR>
+): string {
+  return `${logoName}-${logoColor}.svg`;
+}
+
+export function getLogoCDNUrl(
+  logoName: $Values<typeof LOGO>,
+  logoColor: $Values<typeof LOGO_COLOR>
+): string {
+  const svgFilename = getSVGFilename(logoName, logoColor);
+
+  return `${CDN_BASE_URL}/${svgFilename}`;
 }

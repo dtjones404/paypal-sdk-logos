@@ -3,7 +3,7 @@
 
 import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
 
-import { getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColorMap, LogoColorSVGMap } from "../../types";
 
@@ -79,19 +79,12 @@ export const getIdealSVGs = (): LogoColorSVGMap =>
 
 export function IdealLogo({
   logoColor = LOGO_COLOR.BLACK,
-  logoCDNExperimentIsEnabled,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
-  logoCDNExperimentIsEnabled?: boolean,
 }): ComponentNode<SVGLogoProps> {
   const svg = getIdealSVGs()[logoColor];
-
-  let cdnUrl;
-  if (logoCDNExperimentIsEnabled) {
-    cdnUrl =
-      "https://www.paypalobjects.com/images/checkout/latinum/Altpay_logo_iDEAL.svg";
-  }
+  const cdnUrl = getLogoCDNUrl(LOGO.IDEAL, logoColor);
 
   return (
     <SVGLogo
