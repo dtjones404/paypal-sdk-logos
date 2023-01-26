@@ -3,9 +3,9 @@
 
 import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
 
-import { SVGLogo, getLogoColors, type SVGLogoProps } from "../../lib";
+import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import { type LogoColorMap } from "../../types";
+import type { LogoColorMap, LogoColorSVGMap } from "../../types";
 
 const LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -31,14 +31,7 @@ const LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({
-  primary,
-  secondary,
-  tertiary,
-  quaternary,
-  quinary,
-  senary,
-}) => {
+const getSVG = ({ primary, secondary, tertiary, quaternary, senary }) => {
   return (
     <svg
       width="80"
@@ -111,6 +104,9 @@ const getSVG = ({
     </svg>
   );
 };
+
+export const getBlikSVGs = (): LogoColorSVGMap =>
+  getSVGs(LOGO.BLIK, getSVG, LOGO_COLORS);
 
 export function BlikLogo({
   logoColor = LOGO_COLOR.BLACK,

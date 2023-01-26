@@ -3,9 +3,9 @@
 
 import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
 
-import { SVGLogo, getLogoColors, type SVGLogoProps } from "../../lib";
+import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import { type LogoColorMap } from "../../types";
+import type { LogoColorMap, LogoColorSVGMap } from "../../types";
 
 const LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -64,6 +64,9 @@ const getSVG = ({ primary, secondary }) => {
     </svg>
   );
 };
+
+export const getOxxoSVGs = (): LogoColorSVGMap =>
+  getSVGs(LOGO.OXXO, getSVG, LOGO_COLORS);
 
 export function OxxoLogo({
   logoColor = LOGO_COLOR.BLACK,
