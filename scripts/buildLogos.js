@@ -4,13 +4,60 @@ import fs from "fs-extra";
 import { $ } from "zx";
 import { html } from "@krakenjs/jsx-pragmatic";
 
-// eslint-disable-next-line import/no-namespace
 import { getSVGFilename } from "../src/lib";
-import { getIdealSVGs } from "../src/logos";
+import {
+  getApplepaySVGs,
+  getBancontactSVGs,
+  getBlikSVGs,
+  getBoletoSVGs,
+  getEpsSVGs,
+  getGiropaySVGs,
+  getIdealSVGs,
+  getItauSVGs,
+  getMaximaSVGs,
+  getMercadoPagoSVGs,
+  getMultibancoSVGs,
+  getMybankSVGs,
+  getOxxoSVGs,
+  getP24SVGs,
+  getPaidySVGs,
+  getPayuSVGs,
+  getSatispaySVGs,
+  getSepaSVGs,
+  getSofortSVGs,
+  getTrustlySVGs,
+  getVerkkopankkiSVGs,
+  getWechatpaySVGs,
+  getZimplerSVGs,
+} from "../src/logos";
 
 import { getPackage } from "./utils";
 
-const LOGO_GETTERS = { ideal: getIdealSVGs };
+const LOGO_GETTERS = {
+  applepay: getApplepaySVGs,
+  bancontact: getBancontactSVGs,
+  blik: getBlikSVGs,
+  boleto: getBoletoSVGs,
+  eps: getEpsSVGs,
+  giropay: getGiropaySVGs,
+  ideal: getIdealSVGs,
+  itau: getItauSVGs,
+  maxima: getMaximaSVGs,
+  mercadopago: getMercadoPagoSVGs,
+  multibanco: getMultibancoSVGs,
+  mybank: getMybankSVGs,
+  oxxo: getOxxoSVGs,
+  p24: getP24SVGs,
+  paidy: getPaidySVGs,
+  payu: getPayuSVGs,
+  satispay: getSatispaySVGs,
+  sepa: getSepaSVGs,
+  sofort: getSofortSVGs,
+  trustly: getTrustlySVGs,
+  verkkopankki: getVerkkopankkiSVGs,
+  wechatpay: getWechatpaySVGs,
+  zimpler: getZimplerSVGs,
+};
 
 async function buildLogos() {
   const version = getPackage().version;
