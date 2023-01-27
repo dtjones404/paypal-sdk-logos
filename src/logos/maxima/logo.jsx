@@ -7,7 +7,7 @@ import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColorMap, LogoColorSVGMap } from "../../types";
 
-const LOGO_COLORS: LogoColorMap = {
+export const MAXIMA_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
     primary: "#004A91",
     secondary: "#ED1921",
