@@ -55,7 +55,7 @@ export function SatispayLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getSatispaySVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.SATISPAY, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.SATISPAY, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

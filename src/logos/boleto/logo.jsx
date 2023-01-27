@@ -48,7 +48,7 @@ export function BoletoLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getBoletoSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.BOLETO, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.BOLETO, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

@@ -96,7 +96,7 @@ export function MybankLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getMybankSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.MYBANK, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.MYBANK, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

@@ -118,7 +118,7 @@ export function GiropayLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getGiropaySVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.GIROPAY, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.GIROPAY, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

@@ -135,7 +135,7 @@ export function EpsLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getEpsSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.EPS, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.EPS, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

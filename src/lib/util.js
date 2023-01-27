@@ -57,8 +57,13 @@ export function getSVGFilename(
 
 export function getLogoCDNUrl(
   logoName: $Values<typeof LOGO>,
+  logoColorMap: LogoColorMap,
   logoColor: $Values<typeof LOGO_COLOR>
 ): string {
+  if (!logoColorMap[logoColor]) {
+    logoColor = LOGO_COLOR.DEFAULT;
+  }
+
   const svgFilename = getSVGFilename(logoName, logoColor);
 
   return `${CDN_BASE_URL}/${svgFilename}`;

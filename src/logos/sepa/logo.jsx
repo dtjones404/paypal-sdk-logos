@@ -123,7 +123,7 @@ export function SepaLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getSepaSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.SEPA, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.SEPA, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

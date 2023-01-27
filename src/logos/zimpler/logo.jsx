@@ -52,7 +52,7 @@ export function ZimplerLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getZimplerSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.ZIMPLER, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.ZIMPLER, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

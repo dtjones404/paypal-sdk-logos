@@ -84,7 +84,7 @@ export function IdealLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getIdealSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.IDEAL, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.IDEAL, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

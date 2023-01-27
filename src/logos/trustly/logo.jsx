@@ -90,7 +90,7 @@ export function TrustlyLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getTrustlySVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.TRUSTLY, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.TRUSTLY, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

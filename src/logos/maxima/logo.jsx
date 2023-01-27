@@ -103,7 +103,7 @@ export function MaximaLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getMaximaSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.MAXIMA, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.MAXIMA, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

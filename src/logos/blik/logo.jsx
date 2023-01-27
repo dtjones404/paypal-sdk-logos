@@ -115,7 +115,7 @@ export function BlikLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getBlikSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.BLIK, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.BLIK, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

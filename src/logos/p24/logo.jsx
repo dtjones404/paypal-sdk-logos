@@ -135,7 +135,7 @@ export function P24Logo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getP24SVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.P24, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.P24, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

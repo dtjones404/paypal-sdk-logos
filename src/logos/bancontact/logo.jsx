@@ -87,7 +87,7 @@ export function BancontactLogo({
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
   const svg = getBancontactSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.BANCONTACT, logoColor);
+  const cdnUrl = getLogoCDNUrl(LOGO.BANCONTACT, LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo
