@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const MERCADOPAGO_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -28,7 +37,12 @@ export const MERCADOPAGO_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary, secondary, tertiary, quaternary }) => {
+const getMercadopagoSVG = ({
+  primary,
+  secondary,
+  tertiary,
+  quaternary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="98"
@@ -143,17 +157,20 @@ const getSVG = ({ primary, secondary, tertiary, quaternary }) => {
   );
 };
 
-export const getMercadoPagoSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.MERCADOPAGO, getSVG, LOGO_COLORS);
-
 export function MercadoPagoLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getMercadoPagoSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.MERCADOPAGO, LOGO_COLORS, logoColor);
+  const svg = getMercadopagoSVG(
+    getLogoColors(LOGO.MERCADOPAGO, MERCADOPAGO_LOGO_COLORS, logoColor)
+  );
+  const cdnUrl = getLogoCDNUrl(
+    LOGO.MERCADOPAGO,
+    MERCADOPAGO_LOGO_COLORS,
+    logoColor
+  );
 
   return (
     <SVGLogo

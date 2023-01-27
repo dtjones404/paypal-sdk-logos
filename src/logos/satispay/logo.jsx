@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const SATISPAY_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -19,7 +28,7 @@ export const SATISPAY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary }) => {
+const getSatispaySVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       width="94"
@@ -45,17 +54,16 @@ const getSVG = ({ primary }) => {
   );
 };
 
-export const getSatispaySVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.SATISPAY, getSVG, LOGO_COLORS);
-
 export function SatispayLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getSatispaySVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.SATISPAY, LOGO_COLORS, logoColor);
+  const svg = getSatispaySVG(
+    getLogoColors(LOGO.SATISPAY, SATISPAY_LOGO_COLORS, logoColor)
+  );
+  const cdnUrl = getLogoCDNUrl(LOGO.SATISPAY, SATISPAY_LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

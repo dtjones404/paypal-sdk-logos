@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const BLIK_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -31,7 +40,13 @@ export const BLIK_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary, secondary, tertiary, quaternary, senary }) => {
+const getBlikSVG = ({
+  primary,
+  secondary,
+  tertiary,
+  quaternary,
+  senary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="80"
@@ -105,17 +120,14 @@ const getSVG = ({ primary, secondary, tertiary, quaternary, senary }) => {
   );
 };
 
-export const getBlikSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.BLIK, getSVG, LOGO_COLORS);
-
 export function BlikLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getBlikSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.BLIK, LOGO_COLORS, logoColor);
+  const svg = getBlikSVG(getLogoColors(LOGO.BLIK, BLIK_LOGO_COLORS, logoColor));
+  const cdnUrl = getLogoCDNUrl(LOGO.BLIK, BLIK_LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

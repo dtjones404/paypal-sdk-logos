@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const OXXO_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -22,7 +31,7 @@ export const OXXO_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary, secondary }) => {
+const getOxxoSVG = ({ primary, secondary }: LogoColors): ElementNode => {
   return (
     <svg
       width="69"
@@ -65,17 +74,14 @@ const getSVG = ({ primary, secondary }) => {
   );
 };
 
-export const getOxxoSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.OXXO, getSVG, LOGO_COLORS);
-
 export function OxxoLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getOxxoSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.OXXO, LOGO_COLORS, logoColor);
+  const svg = getOxxoSVG(getLogoColors(LOGO.OXXO, OXXO_LOGO_COLORS, logoColor));
+  const cdnUrl = getLogoCDNUrl(LOGO.OXXO, OXXO_LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

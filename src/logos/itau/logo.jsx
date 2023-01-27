@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const ITAU_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -22,7 +31,7 @@ export const ITAU_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary }) => {
+const getItauSVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       version="1.1"
@@ -149,17 +158,14 @@ const getSVG = ({ primary }) => {
   );
 };
 
-export const getItauSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.ITAU, getSVG, LOGO_COLORS);
-
 export function ItauLogo({
   logoColor = LOGO_COLOR.DEFAULT,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getItauSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.ITAU, LOGO_COLORS, logoColor);
+  const svg = getItauSVG(getLogoColors(LOGO.ITAU, ITAU_LOGO_COLORS, logoColor));
+  const cdnUrl = getLogoCDNUrl(LOGO.ITAU, ITAU_LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

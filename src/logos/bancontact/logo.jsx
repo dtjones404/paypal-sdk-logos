@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const BANCONTACT_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -28,7 +37,12 @@ export const BANCONTACT_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary, secondary, tertiary, quaternary }) => {
+const getBancontactSVG = ({
+  primary,
+  secondary,
+  tertiary,
+  quaternary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="155"
@@ -77,17 +91,20 @@ const getSVG = ({ primary, secondary, tertiary, quaternary }) => {
   );
 };
 
-export const getBancontactSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.BANCONTACT, getSVG, LOGO_COLORS);
-
 export function BancontactLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getBancontactSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.BANCONTACT, LOGO_COLORS, logoColor);
+  const svg = getBancontactSVG(
+    getLogoColors(LOGO.BANCONTACT, BANCONTACT_LOGO_COLORS, logoColor)
+  );
+  const cdnUrl = getLogoCDNUrl(
+    LOGO.BANCONTACT,
+    BANCONTACT_LOGO_COLORS,
+    logoColor
+  );
 
   return (
     <SVGLogo

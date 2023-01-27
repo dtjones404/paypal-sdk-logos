@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const ZIMPLER_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -19,7 +28,7 @@ export const ZIMPLER_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary }) => {
+const getZimplerSVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       width="127"
@@ -42,17 +51,16 @@ const getSVG = ({ primary }) => {
   );
 };
 
-export const getZimplerSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.ZIMPLER, getSVG, LOGO_COLORS);
-
 export function ZimplerLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getZimplerSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.ZIMPLER, LOGO_COLORS, logoColor);
+  const svg = getZimplerSVG(
+    getLogoColors(LOGO.ZIMPLER, ZIMPLER_LOGO_COLORS, logoColor)
+  );
+  const cdnUrl = getLogoCDNUrl(LOGO.ZIMPLER, ZIMPLER_LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

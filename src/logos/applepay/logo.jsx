@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const APPLEPAY_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -22,7 +31,7 @@ export const APPLEPAY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary }) => {
+export const getApplepaySVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -38,17 +47,16 @@ const getSVG = ({ primary }) => {
   );
 };
 
-export const getApplepaySVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.APPLEPAY, getSVG, LOGO_COLORS);
-
 export function ApplePayLogo({
   logoColor = LOGO_COLOR.DEFAULT,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getApplepaySVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.APPLEPAY, LOGO_COLORS, logoColor);
+  const svg = getApplepaySVG(
+    getLogoColors(LOGO.APPLEPAY, APPLEPAY_LOGO_COLORS, logoColor)
+  );
+  const cdnUrl = getLogoCDNUrl(LOGO.APPLEPAY, APPLEPAY_LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

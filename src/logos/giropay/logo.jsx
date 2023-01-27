@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const GIROPAY_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -31,7 +40,13 @@ export const GIROPAY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({ primary, secondary, tertiary, quaternary, quinary }) => {
+const getGiropaySVG = ({
+  primary,
+  secondary,
+  tertiary,
+  quaternary,
+  quinary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="89"
@@ -108,17 +123,16 @@ const getSVG = ({ primary, secondary, tertiary, quaternary, quinary }) => {
   );
 };
 
-export const getGiropaySVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.GIROPAY, getSVG, LOGO_COLORS);
-
 export function GiropayLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getGiropaySVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.GIROPAY, LOGO_COLORS, logoColor);
+  const svg = getGiropaySVG(
+    getLogoColors(LOGO.GIROPAY, GIROPAY_LOGO_COLORS, logoColor)
+  );
+  const cdnUrl = getLogoCDNUrl(LOGO.GIROPAY, GIROPAY_LOGO_COLORS, logoColor);
 
   return (
     <SVGLogo

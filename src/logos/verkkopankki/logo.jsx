@@ -1,11 +1,20 @@
 /* @flow */
 /** @jsx node */
 
-import { node, type ComponentNode } from "@krakenjs/jsx-pragmatic/src";
+import {
+  node,
+  type ElementNode,
+  type ComponentNode,
+} from "@krakenjs/jsx-pragmatic/src";
 
-import { getLogoCDNUrl, getSVGs, SVGLogo, type SVGLogoProps } from "../../lib";
+import {
+  getLogoCDNUrl,
+  getLogoColors,
+  SVGLogo,
+  type SVGLogoProps,
+} from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
-import type { LogoColorMap, LogoColorSVGMap } from "../../types";
+import type { LogoColors, LogoColorMap } from "../../types";
 
 export const VERKKOPANKKI_LOGO_COLORS: LogoColorMap = {
   [LOGO_COLOR.DEFAULT]: {
@@ -34,14 +43,14 @@ export const VERKKOPANKKI_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSVG = ({
+const getVerkkopankkiSVG = ({
   primary,
   secondary,
   tertiary,
   quaternary,
   quinary,
   senary,
-}) => {
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="90"
@@ -329,17 +338,20 @@ const getSVG = ({
   );
 };
 
-export const getVerkkopankkiSVGs = (): LogoColorSVGMap =>
-  getSVGs(LOGO.VERKKOPANKKI, getSVG, LOGO_COLORS);
-
 export function VerkkopankkiLogo({
   logoColor = LOGO_COLOR.BLACK,
   ...props
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getVerkkopankkiSVGs()[logoColor];
-  const cdnUrl = getLogoCDNUrl(LOGO.VERKKOPANKKI, LOGO_COLORS, logoColor);
+  const svg = getVerkkopankkiSVG(
+    getLogoColors(LOGO.VERKKOPANKKI, VERKKOPANKKI_LOGO_COLORS, logoColor)
+  );
+  const cdnUrl = getLogoCDNUrl(
+    LOGO.VERKKOPANKKI,
+    VERKKOPANKKI_LOGO_COLORS,
+    logoColor
+  );
 
   return (
     <SVGLogo
