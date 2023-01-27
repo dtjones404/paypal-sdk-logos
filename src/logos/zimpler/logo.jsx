@@ -28,7 +28,7 @@ export const ZIMPLER_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getZimplerSVG = ({ primary }: LogoColors): ElementNode => {
+export const getZimplerSVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       width="127"

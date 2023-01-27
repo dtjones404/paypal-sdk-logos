@@ -34,7 +34,7 @@ export const PAIDY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getPaidySVG = ({
+export const getPaidySVG = ({
   primary,
   secondary,
   tertiary,

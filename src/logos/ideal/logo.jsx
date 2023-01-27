@@ -31,7 +31,10 @@ export const IDEAL_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getIdealSVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getIdealSVG = ({
+  primary,
+  secondary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -31,7 +31,10 @@ export const MYBANK_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getMybankSVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getMybankSVG = ({
+  primary,
+  secondary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="78"

@@ -40,7 +40,7 @@ export const GIROPAY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getGiropaySVG = ({
+export const getGiropaySVG = ({
   primary,
   secondary,
   tertiary,

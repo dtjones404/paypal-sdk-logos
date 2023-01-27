@@ -31,7 +31,10 @@ export const MULTIBANCO_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getMultibancoSVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getMultibancoSVG = ({
+  primary,
+  secondary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="31"

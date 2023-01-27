@@ -31,7 +31,7 @@ export const OXXO_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getOxxoSVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getOxxoSVG = ({ primary, secondary }: LogoColors): ElementNode => {
   return (
     <svg
       width="69"

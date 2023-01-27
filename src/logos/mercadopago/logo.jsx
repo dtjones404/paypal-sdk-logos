@@ -37,7 +37,7 @@ export const MERCADOPAGO_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getMercadopagoSVG = ({
+export const getMercadoPagoSVG = ({
   primary,
   secondary,
   tertiary,
@@ -163,7 +163,7 @@ export function MercadoPagoLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getMercadopagoSVG(
+  const svg = getMercadoPagoSVG(
     getLogoColors(LOGO.MERCADOPAGO, MERCADOPAGO_LOGO_COLORS, logoColor)
   );
   const cdnUrl = getLogoCDNUrl(

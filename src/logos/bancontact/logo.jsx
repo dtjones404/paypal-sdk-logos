@@ -37,7 +37,7 @@ export const BANCONTACT_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getBancontactSVG = ({
+export const getBancontactSVG = ({
   primary,
   secondary,
   tertiary,

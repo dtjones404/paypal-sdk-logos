@@ -40,7 +40,7 @@ export const BLIK_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getBlikSVG = ({
+export const getBlikSVG = ({
   primary,
   secondary,
   tertiary,

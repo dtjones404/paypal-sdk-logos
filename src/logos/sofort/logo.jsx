@@ -31,7 +31,10 @@ export const SOFORT_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSofortSVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getSofortSVG = ({
+  primary,
+  secondary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="240"

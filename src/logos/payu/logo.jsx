@@ -28,7 +28,7 @@ export const PAYU_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getPayuSVG = ({ primary }: LogoColors): ElementNode => {
+export const getPayuSVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       width="45"

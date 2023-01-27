@@ -31,7 +31,7 @@ export const P24_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getP24SVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getP24SVG = ({ primary, secondary }: LogoColors): ElementNode => {
   return (
     <svg
       width="90"

@@ -31,7 +31,10 @@ export const MAXIMA_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getMaximaSVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getMaximaSVG = ({
+  primary,
+  secondary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="93px"

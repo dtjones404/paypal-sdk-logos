@@ -28,7 +28,7 @@ export const SATISPAY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSatispaySVG = ({ primary }: LogoColors): ElementNode => {
+export const getSatispaySVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       width="94"

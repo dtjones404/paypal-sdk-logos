@@ -31,7 +31,7 @@ export const EPS_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getEpsSVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getEpsSVG = ({ primary, secondary }: LogoColors): ElementNode => {
   return (
     <svg
       width="74"

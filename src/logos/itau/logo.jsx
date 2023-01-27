@@ -31,7 +31,7 @@ export const ITAU_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getItauSVG = ({ primary }: LogoColors): ElementNode => {
+export const getItauSVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       version="1.1"

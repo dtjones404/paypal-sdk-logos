@@ -31,7 +31,10 @@ export const WECHATPAY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getWechatpaySVG = ({ primary, secondary }: LogoColors): ElementNode => {
+export const getWechatpaySVG = ({
+  primary,
+  secondary,
+}: LogoColors): ElementNode => {
   return (
     <svg
       width="106"

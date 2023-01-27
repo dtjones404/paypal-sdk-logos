@@ -43,7 +43,7 @@ export const VERKKOPANKKI_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getVerkkopankkiSVG = ({
+export const getVerkkopankkiSVG = ({
   primary,
   secondary,
   tertiary,

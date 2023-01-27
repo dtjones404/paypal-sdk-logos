@@ -28,7 +28,7 @@ export const TRUSTLY_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getTrustlySVG = ({ primary }: LogoColors): ElementNode => {
+export const getTrustlySVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       width="95"

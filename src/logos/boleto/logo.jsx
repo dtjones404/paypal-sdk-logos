@@ -28,7 +28,7 @@ export const BOLETO_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getBoletoSVG = ({ primary }: LogoColors): ElementNode => {
+export const getBoletoSVG = ({ primary }: LogoColors): ElementNode => {
   return (
     <svg
       width="57"

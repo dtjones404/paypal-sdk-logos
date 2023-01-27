@@ -31,7 +31,7 @@ export const SEPA_LOGO_COLORS: LogoColorMap = {
   },
 };
 
-const getSepaSVG = ({ main, card }: LogoColors): ElementNode => {
+export const getSepaSVG = ({ main, card }: LogoColors): ElementNode => {
   return (
     <svg
       width="100"
