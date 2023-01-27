@@ -5,6 +5,7 @@ import { $ } from "zx";
 import { html } from "@krakenjs/jsx-pragmatic";
 
 import { getSVGFilename } from "../src/lib";
+import { LOGO } from "../src/constants";
 import {
   getApplepaySVGs,
   getBancontactSVGs,
@@ -34,29 +35,29 @@ import {
 import { getPackage } from "./utils";
 
 const LOGO_GETTERS = {
-  applepay: getApplepaySVGs,
-  bancontact: getBancontactSVGs,
-  blik: getBlikSVGs,
-  boleto: getBoletoSVGs,
-  eps: getEpsSVGs,
-  giropay: getGiropaySVGs,
-  ideal: getIdealSVGs,
-  itau: getItauSVGs,
-  maxima: getMaximaSVGs,
-  mercadopago: getMercadoPagoSVGs,
-  multibanco: getMultibancoSVGs,
-  mybank: getMybankSVGs,
-  oxxo: getOxxoSVGs,
-  p24: getP24SVGs,
-  paidy: getPaidySVGs,
-  payu: getPayuSVGs,
-  satispay: getSatispaySVGs,
-  sepa: getSepaSVGs,
-  sofort: getSofortSVGs,
-  trustly: getTrustlySVGs,
-  verkkopankki: getVerkkopankkiSVGs,
-  wechatpay: getWechatpaySVGs,
-  zimpler: getZimplerSVGs,
+  [LOGO.APPLEPAY]: getApplepaySVGs,
+  [LOGO.BANCONTACT]: getBancontactSVGs,
+  [LOGO.BLIK]: getBlikSVGs,
+  [LOGO.BOLETO]: getBoletoSVGs,
+  [LOGO.EPS]: getEpsSVGs,
+  [LOGO.GIROPAY]: getGiropaySVGs,
+  [LOGO.IDEAL]: getIdealSVGs,
+  [LOGO.ITAU]: getItauSVGs,
+  [LOGO.MAXIMA]: getMaximaSVGs,
+  [LOGO.MERCADOPAGO]: getMercadoPagoSVGs,
+  [LOGO.MULTIBANCO]: getMultibancoSVGs,
+  [LOGO.MYBANK]: getMybankSVGs,
+  [LOGO.OXXO]: getOxxoSVGs,
+  [LOGO.P24]: getP24SVGs,
+  [LOGO.PAIDY]: getPaidySVGs,
+  [LOGO.PAYU]: getPayuSVGs,
+  [LOGO.SATISPAY]: getSatispaySVGs,
+  [LOGO.SEPA]: getSepaSVGs,
+  [LOGO.SOFORT]: getSofortSVGs,
+  [LOGO.TRUSTLY]: getTrustlySVGs,
+  [LOGO.VERKKOPANKKI]: getVerkkopankkiSVGs,
+  [LOGO.WECHATPAY]: getWechatpaySVGs,
+  [LOGO.ZIMPLER]: getZimplerSVGs,
 };
 
 async function buildLogos() {
