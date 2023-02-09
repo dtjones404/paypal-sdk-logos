@@ -74,17 +74,7 @@ export function EloLogo({
   loadFromCDN?: boolean,
   [string]: string,
 } = {}): ComponentNode<SVGCardLogoProps> {
-  const svg = getEloSVG();
   const cdnUrl = getLogoCDNUrl(CARD.ELO);
 
-  return (
-    <SVGCardLogo
-      {...props}
-      name={CARD.ELO}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGCardLogo {...props} name={CARD.ELO} cdnUrl={cdnUrl} />;
 }

@@ -130,17 +130,7 @@ export const getCreditMarkSVG = (): ElementNode => {
 };
 
 export function CreditMark({ ...props }: {||}): ComponentNode<SVGLogoProps> {
-  const svg = getCreditMarkSVG();
   const cdnUrl = getLogoCDNUrl(MARK.CREDIT);
 
-  return (
-    <SVGLogo
-      {...props}
-      name={LOGO.CREDIT}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGLogo {...props} name={LOGO.CREDIT} cdnUrl={cdnUrl} />;
 }

@@ -98,17 +98,7 @@ export function DiscoverLogo({
   loadFromCDN?: boolean,
   [string]: string,
 } = {}): ComponentNode<SVGCardLogoProps> {
-  const svg = getDiscoverSVG();
   const cdnUrl = getLogoCDNUrl(CARD.DISCOVER);
 
-  return (
-    <SVGCardLogo
-      {...props}
-      name={CARD.DISCOVER}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGCardLogo {...props} name={CARD.DISCOVER} cdnUrl={cdnUrl} />;
 }

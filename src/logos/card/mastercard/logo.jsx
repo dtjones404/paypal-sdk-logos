@@ -53,17 +53,7 @@ export function MastercardLogo({
   loadFromCDN?: boolean,
   [string]: string,
 } = {}): ComponentNode<SVGCardLogoProps> {
-  const svg = getMastercardSVG();
   const cdnUrl = getLogoCDNUrl(CARD.MASTERCARD);
 
-  return (
-    <SVGCardLogo
-      {...props}
-      name={CARD.MASTERCARD}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGCardLogo {...props} name={CARD.MASTERCARD} cdnUrl={cdnUrl} />;
 }

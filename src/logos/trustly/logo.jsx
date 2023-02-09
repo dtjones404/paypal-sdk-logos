@@ -7,12 +7,7 @@ import {
   type ComponentNode,
 } from "@krakenjs/jsx-pragmatic/src";
 
-import {
-  getLogoCDNUrl,
-  getLogoColors,
-  SVGLogo,
-  type SVGLogoProps,
-} from "../../lib";
+import { getLogoCDNUrl, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColors, LogoColorMap } from "../../types";
 
@@ -95,19 +90,7 @@ export function TrustlyLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getTrustlySVG(
-    getLogoColors(LOGO.TRUSTLY, TRUSTLY_LOGO_COLORS, logoColor)
-  );
   const cdnUrl = getLogoCDNUrl(LOGO.TRUSTLY, TRUSTLY_LOGO_COLORS, logoColor);
 
-  return (
-    <SVGLogo
-      {...props}
-      name={LOGO.TRUSTLY}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGLogo {...props} name={LOGO.TRUSTLY} cdnUrl={cdnUrl} />;
 }

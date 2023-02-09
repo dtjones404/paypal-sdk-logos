@@ -67,17 +67,7 @@ export function HiperLogo({
   loadFromCDN?: boolean,
   [string]: string,
 } = {}): ComponentNode<SVGCardLogoProps> {
-  const svg = getHiperSVG();
   const cdnUrl = getLogoCDNUrl(CARD.HIPER);
 
-  return (
-    <SVGCardLogo
-      {...props}
-      name={CARD.HIPER}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGCardLogo {...props} name={CARD.HIPER} cdnUrl={cdnUrl} />;
 }

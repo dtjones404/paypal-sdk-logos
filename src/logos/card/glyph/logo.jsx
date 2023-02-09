@@ -12,7 +12,6 @@ import {
   getLogoCDNUrl,
   SVGCardLogo,
   type SVGCardLogoProps,
-  getLogoColors,
 } from "../../../lib";
 import { LOGO_COLOR, LOGO } from "../../../constants";
 
@@ -60,19 +59,7 @@ export function GlyphCard({
   loadFromCDN?: boolean,
   [string]: string,
 } = {}): ComponentNode<SVGCardLogoProps> {
-  const svg = getGlyphCardSVG(
-    getLogoColors(LOGO.CARD, GLYPH_CARD_LOGO_COLORS, logoColor)
-  );
   const cdnUrl = getLogoCDNUrl(LOGO.CARD, GLYPH_CARD_LOGO_COLORS, logoColor);
 
-  return (
-    <SVGCardLogo
-      {...props}
-      name=""
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGCardLogo {...props} name="" cdnUrl={cdnUrl} />;
 }

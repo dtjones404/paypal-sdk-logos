@@ -171,17 +171,7 @@ export function JcbLogo({
   loadFromCDN?: boolean,
   [string]: string,
 } = {}): ComponentNode<SVGCardLogoProps> {
-  const svg = getJcbSVG();
   const cdnUrl = getLogoCDNUrl(CARD.JCB);
 
-  return (
-    <SVGCardLogo
-      {...props}
-      name={CARD.JCB}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGCardLogo {...props} name={CARD.JCB} cdnUrl={cdnUrl} />;
 }

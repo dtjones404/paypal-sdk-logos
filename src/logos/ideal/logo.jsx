@@ -7,12 +7,7 @@ import {
   type ComponentNode,
 } from "@krakenjs/jsx-pragmatic/src";
 
-import {
-  getLogoCDNUrl,
-  getLogoColors,
-  SVGLogo,
-  type SVGLogoProps,
-} from "../../lib";
+import { getLogoCDNUrl, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColors, LogoColorMap } from "../../types";
 
@@ -92,19 +87,7 @@ export function IdealLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getIdealSVG(
-    getLogoColors(LOGO.IDEAL, IDEAL_LOGO_COLORS, logoColor)
-  );
   const cdnUrl = getLogoCDNUrl(LOGO.IDEAL, IDEAL_LOGO_COLORS, logoColor);
 
-  return (
-    <SVGLogo
-      {...props}
-      name={LOGO.IDEAL}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGLogo {...props} name={LOGO.IDEAL} cdnUrl={cdnUrl} />;
 }

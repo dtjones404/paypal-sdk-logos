@@ -41,17 +41,7 @@ export function VisaLogo({
   loadFromCDN?: boolean,
   [string]: string,
 } = {}): ComponentNode<SVGCardLogoProps> {
-  const svg = getVisaSVG();
   const cdnUrl = getLogoCDNUrl(CARD.VISA);
 
-  return (
-    <SVGCardLogo
-      {...props}
-      name={CARD.VISA}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGCardLogo {...props} name={CARD.VISA} cdnUrl={cdnUrl} />;
 }

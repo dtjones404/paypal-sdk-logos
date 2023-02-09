@@ -78,17 +78,7 @@ export const getPayPalMarkSVG = (): ElementNode => {
 };
 
 export function PayPalMark({ ...props }: {||}): ComponentNode<SVGLogoProps> {
-  const svg = getPayPalMarkSVG();
   const cdnUrl = getLogoCDNUrl(MARK.PAYPAL);
 
-  return (
-    <SVGLogo
-      {...props}
-      name={LOGO.PP}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
-  );
+  return <SVGLogo {...props} name={LOGO.PP} cdnUrl={cdnUrl} />;
 }

@@ -7,12 +7,7 @@ import {
   type ComponentNode,
 } from "@krakenjs/jsx-pragmatic/src";
 
-import {
-  getLogoCDNUrl,
-  getLogoColors,
-  SVGLogo,
-  type SVGLogoProps,
-} from "../../lib";
+import { getLogoCDNUrl, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColors, LogoColorMap } from "../../types";
 
@@ -80,7 +75,6 @@ export function OxxoLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getOxxoSVG(getLogoColors(LOGO.OXXO, OXXO_LOGO_COLORS, logoColor));
   const cdnUrl = getLogoCDNUrl(LOGO.OXXO, OXXO_LOGO_COLORS, logoColor);
 
   return (
@@ -89,9 +83,6 @@ export function OxxoLogo({
       name={LOGO.OXXO}
       logoColor={logoColor}
       cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
     />
   );
 }

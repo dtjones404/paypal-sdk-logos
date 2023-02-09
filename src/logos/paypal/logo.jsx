@@ -7,12 +7,7 @@ import {
   type ComponentNode,
 } from "@krakenjs/jsx-pragmatic/src";
 
-import {
-  getLogoCDNUrl,
-  getLogoColors,
-  SVGLogo,
-  type SVGLogoProps,
-} from "../../lib";
+import { getLogoCDNUrl, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColors, LogoColorMap } from "../../types";
 
@@ -85,9 +80,6 @@ export function PayPalLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getPayPalSVG(
-    getLogoColors(LOGO.PAYPAL, PAYPAL_LOGO_COLORS, logoColor)
-  );
   const cdnUrl = getLogoCDNUrl(LOGO.PAYPAL, PAYPAL_LOGO_COLORS, logoColor);
 
   return (
@@ -98,9 +90,6 @@ export function PayPalLogo({
       role="presentation"
       logoColor={logoColor}
       cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
     />
   );
 }
@@ -173,8 +162,8 @@ export function PPLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getPPSVG(getLogoColors(LOGO.PP, PP_LOGO_COLORS, logoColor));
   const cdnUrl = getLogoCDNUrl(LOGO.PP, PP_LOGO_COLORS, logoColor);
+
   return (
     <SVGLogo
       {...props}
@@ -183,9 +172,6 @@ export function PPLogo({
       role="presentation"
       logoColor={logoColor}
       cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
     />
   );
 }
@@ -241,9 +227,6 @@ export function PPMonochrome({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getPPMonochromeSVG(
-    getLogoColors(LOGO.PPMONOCHROME, PPMONOCHROME_LOGO_COLORS, logoColor)
-  );
   const cdnUrl = getLogoCDNUrl(
     LOGO.PPMONOCHROME,
     PPMONOCHROME_LOGO_COLORS,
@@ -251,14 +234,6 @@ export function PPMonochrome({
   );
 
   return (
-    <SVGLogo
-      name={LOGO.PP}
-      alt="PP"
-      logoColor={logoColor}
-      cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
-    />
+    <SVGLogo name={LOGO.PP} alt="PP" logoColor={logoColor} cdnUrl={cdnUrl} />
   );
 }

@@ -7,12 +7,7 @@ import {
   type ComponentNode,
 } from "@krakenjs/jsx-pragmatic/src";
 
-import {
-  getLogoCDNUrl,
-  getLogoColors,
-  SVGLogo,
-  type SVGLogoProps,
-} from "../../lib";
+import { getLogoCDNUrl, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColors, LogoColorMap } from "../../types";
 
@@ -97,9 +92,6 @@ export function BancontactLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getBancontactSVG(
-    getLogoColors(LOGO.BANCONTACT, BANCONTACT_LOGO_COLORS, logoColor)
-  );
   const cdnUrl = getLogoCDNUrl(
     LOGO.BANCONTACT,
     BANCONTACT_LOGO_COLORS,
@@ -112,9 +104,6 @@ export function BancontactLogo({
       name={LOGO.BANCONTACT}
       logoColor={logoColor}
       cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
     />
   );
 }

@@ -7,12 +7,7 @@ import {
   type ComponentNode,
 } from "@krakenjs/jsx-pragmatic/src";
 
-import {
-  getLogoCDNUrl,
-  getLogoColors,
-  SVGLogo,
-  type SVGLogoProps,
-} from "../../lib";
+import { getLogoCDNUrl, SVGLogo, type SVGLogoProps } from "../../lib";
 import { LOGO_COLOR, LOGO } from "../../constants";
 import type { LogoColors, LogoColorMap } from "../../types";
 
@@ -128,7 +123,6 @@ export function SepaLogo({
 }: {
   logoColor?: $Values<typeof LOGO_COLOR>,
 }): ComponentNode<SVGLogoProps> {
-  const svg = getSepaSVG(getLogoColors(LOGO.SEPA, SEPA_LOGO_COLORS, logoColor));
   const cdnUrl = getLogoCDNUrl(LOGO.SEPA, SEPA_LOGO_COLORS, logoColor);
 
   return (
@@ -137,9 +131,6 @@ export function SepaLogo({
       name={LOGO.SEPA}
       logoColor={logoColor}
       cdnUrl={cdnUrl}
-      render={() => {
-        return svg;
-      }}
     />
   );
 }
